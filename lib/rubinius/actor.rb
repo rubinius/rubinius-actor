@@ -28,7 +28,9 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-class Actor
+require 'rubinius/core-api'
+
+class Rubinius::Actor
   class DeadActorError < RuntimeError
     attr_reader :actor
     attr_reader :reason
