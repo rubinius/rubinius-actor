@@ -3,10 +3,10 @@
 Gem::Specification.new do |s|
   s.name = %q{rubinius-actor}
   s.version = "0.0.1"
-  s.authors = ["MenTaLguY"]
+  s.authors = ["Evan Phoenix", "MenTaLguY"]
   s.date = Time.now
   s.description = "Rubinius's Actor implementation"
-  s.email = ["mental@rydia.net"]
+  s.email = ["evan@fallingsnow.net", "mental@rydia.net"]
   s.files = Dir['{lib}/**/*'] + Dir['{*.txt,*.gemspec,Rakefile}']
   s.homepage = "http://github.com/rubinius/rubinius-actor"
   s.require_paths = ["lib"]

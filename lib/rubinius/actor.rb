@@ -1,6 +1,7 @@
 # actor.rb - implementation of the actor model
 #
 # Copyright 2007-2008  MenTaLguY <mental@rydia.net>
+#           2007-2011  Evan Phoenix <evan@fallingsnow.net>
 #
 # All rights reserved.
 # 
@@ -423,4 +424,4 @@ class Rubinius::Actor
   end
 end
 
-require 'actor/filter'
+require 'rubinius/actor/filter'

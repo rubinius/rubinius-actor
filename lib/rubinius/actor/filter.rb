@@ -1,6 +1,7 @@
 # actor/filter.rb - actor message filters
 #
 # Copyright 2007-2008  MenTaLguY <mental@rydia.net>
+#           2007-2011  Evan Phoenix <evan@fallingsnow.net>
 #
 # All rights reserved.
 # 
