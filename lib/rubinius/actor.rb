@@ -55,7 +55,7 @@ module Rubinius
       @@registered_lock = Rubinius::Channel.new
       @@registered = {}
       @@registered_lock << nil
-  
+
       def current
         Thread.current[:__current_actor__] ||= private_new
       end
@@ -115,7 +115,7 @@ module Rubinius
         recipient.notify_exited(current, reason)
         self
       end
-    
+
       # Link the current Actor to another one.
       def link(actor)
         current = self.current
@@ -123,7 +123,7 @@ module Rubinius
         actor.notify_link current
         self
       end
-    
+
       # Unlink the current Actor from another one
       def unlink(actor)
         current = self.current
@@ -186,6 +186,16 @@ module Rubinius
         @@registered_lock.receive
         begin
           @@registered.delete_if { |n, a| actor.equal? a }
+        ensure
+          @@registered_lock << nil
+        end
+      end
+
+      # Get a list of all registered Actors
+      def registered
+        @@registered_lock.receive
+        begin
+          @@registered.dup
         ensure
           @@registered_lock << nil
         end
@@ -305,7 +315,7 @@ module Rubinius
         action.call message
       end
     end
- 
+
     # Notify this actor that it's now linked to the given one; this is not
     # intended to be used directly except by actor implementations.  Most
     # users will want to use Actor.link instead.
@@ -324,7 +334,7 @@ module Rubinius
       actor.notify_exited(self, exit_reason) unless alive
       self
     end
-  
+
     # Notify this actor that it's now unlinked from the given one; this is
     # not intended to be used directly except by actor implementations.  Most
     # users will want to use Actor.unlink instead.
@@ -339,7 +349,7 @@ module Rubinius
       end
       self
     end
-  
+
     # Notify this actor that one of the Actors it's linked to has exited;
     # this is not intended to be used directly except by actor implementations.
     # Most users will want to use Actor.send_exit instead.
@@ -402,7 +412,7 @@ module Rubinius
       end
     end
     private :check_thread
-  
+
     def _trap_exit=(value) #:nodoc:
       check_thread
       @lock.receive
@@ -413,7 +423,7 @@ module Rubinius
         @lock << nil
       end
     end
-  
+
     def _trap_exit #:nodoc:
       check_thread
       @lock.receive
