@@ -33,6 +33,9 @@ require 'rubinius/core-api'
 
 module Rubinius
   class Actor
+
+    VERSION = "0.0.2"
+
     class DeadActorError < RuntimeError
       attr_reader :actor
       attr_reader :reason
