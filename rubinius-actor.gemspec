@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.summary = "Rubinius's Actor implementation"
   s.add_dependency 'rubinius-core-api'
+  s.license = 'BSD 3-Clause'
 end
